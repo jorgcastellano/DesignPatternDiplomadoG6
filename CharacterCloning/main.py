@@ -53,7 +53,6 @@ class Tank(Character):
     def clone(self):
         return Tank(self._name, self._level, self._skill_points)
 
-
 # Should be able to clone heroes
 mageLeo = Mage("Leo");
 cloneMage = mageLeo.clone();
