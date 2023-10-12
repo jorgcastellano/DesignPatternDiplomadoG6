@@ -1,61 +1,66 @@
 import abc
 
 class Character(abc.ABC):
-    def __init__(self, name, level=1, skill_points=0, skills = []):
+    def __init__(self, name, level=1, skill_points=0, *skills):
         self._name = name
         self._level = level
         self._skill_points = skill_points
-        self.skills = skills
+        self.skills = list(skills)
 
-    @staticmethod
     @abc.abstractmethod
     def clone(self):
         pass
 
-    def learnSkill(self, skill):
+    def learn_skill(self, skill):
         self.skills.append(skill)
-    
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def level(self):
+        return self._level
+
+    @property
+    def skill_points(self):
+        return self._skill_points
+
     def __str__(self):
-        return f"Name: {self._name}, Level: {self._level}, Skill Points: {self._skill_points}, Skills: {self.skills}"
+        return f"Name: {self.name}, Level: {self.level}, Skill Points: {self.skill_points}, Skills: {', '.join(self.skills)}"
 
 
 class Mage(Character):
-    def __init__(self, name, level=1, skill_points=0, skills = ["Earthquake"]):
-        super().__init__(name, level, skill_points)
-        self.skills = skills
+    def __init__(self, name, level=1, skill_points=0, *skills):
+        super().__init__(name, level, skill_points, "Earthquake", *skills)
 
     def clone(self):
-        return Mage(self._name, self._level, self._skill_points)
-    
+        return Mage(self.name, self.level, self.skill_points, *self.skills)
 
 class Bard(Character):
-    def __init__(self, name, level=1, skill_points=0, skills = ["Moral support"]):
-        super().__init__(name, level, skill_points)
-        self.skills = skills
+    def __init__(self, name, level=1, skill_points=0, *skills):
+        super().__init__(name, level, skill_points, "Moral support", *skills)
 
     def clone(self):
-        return Bard(self._name, self._level, self._skill_points)
-    
+        return Bard(self.name, self.level, self.skill_points, *self.skills)
+
 class Warrior(Character):
-    def __init__(self, name, level=1, skill_points=0, skills = ["Sword Throw"]):
-        super().__init__(name, level, skill_points)
-        self.skills = skills
+    def __init__(self, name, level=1, skill_points=0, *skills):
+        super().__init__(name, level, skill_points, "Sword Throw", *skills)
 
     def clone(self):
-        return Warrior(self._name, self._level, self._skill_points)
-    
+        return Warrior(self.name, self.level, self.skill_points, *self.skills)
 
 class Tank(Character):
-    def __init__(self, name, level=1, skill_points=0, skills = ["Raise shield"]):
-        super().__init__(name, level, skill_points)
-        self.skills = skills
+    def __init__(self, name, level=1, skill_points=0, *skills):
+        super().__init__(name, level, skill_points, "Raise shield", *skills)
 
     def clone(self):
-        return Tank(self._name, self._level, self._skill_points)
+        return Tank(self.name, self.level, self.skill_points, *self.skills)
 
 # Should be able to clone heroes
-mageLeo = Mage("Leo");
-cloneMage = mageLeo.clone();
+mageLeo = Mage("Leo")
+cloneMage = mageLeo.clone()
 
 print(mageLeo, cloneMage)
 
@@ -83,16 +88,16 @@ print("Tank: ", tankLeo.skills)
 
 # Should be able to learn new skills
 
-mageLeo.learnSkill("Bad eye curse")
+mageLeo.learn_skill("Bad eye curse")
 
 print("Mage with a new skill: ", mageLeo.skills)
 
 # Should allow players to change the name of a clone
 
-cloneTank._name = "Ruben";
+cloneTank._name = "Ruben"
 
-print("Original tank: ", tankLeo._name)
-print("Cloned tank: ", cloneTank._name)
+print("Original tank: ", tankLeo.name)
+print("Cloned tank: ", cloneTank.name)
 
 # Should retain original Info
 
