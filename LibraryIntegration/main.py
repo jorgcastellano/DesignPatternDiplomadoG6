@@ -30,15 +30,13 @@ class MapToKmlAdapter(IMap):
 
 
 class Library:
-    def set_data(self, data):
-        self.data = data
-
-    def getMap(self):
-        # map = GeoJsonMap()
-        map = MapToKmlAdapter()
-        data = map.draw(self.data)
+    def __init__(self):
+        map_type = GeoJsonMap()
+    def getMap(self, data):
+        data = self.map_type.draw(data)
         print(data)
 
 client = Library()
-client.set_data('[{"a": "1", "b": "2"}]')
-client.getMap()
+client.map_type = MapToKmlAdapter()
+client.getMap('[{"a": "1", "b": "2"}]')
+
