@@ -10,4 +10,4 @@ Adapter: Collaborating objects with incompatible interfaces.
 
 # Class Diagram
 
-![class diagram](./assets/Library_integration.jpg)
+![class diagram](./assets/Library_integratio.png)
