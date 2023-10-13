@@ -16,3 +16,4 @@ How to run the app
 - Eduard Zora
 - Jorge Castellano
 - Leonardo Lopez
+- Sergio Maury Sterling
