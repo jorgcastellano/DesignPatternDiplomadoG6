@@ -4,7 +4,7 @@
 
 Pattern Type:
 
-Creational: The problem is how to create new Characters from existing ones
+Behavioral
 
 Design Pattern
 
