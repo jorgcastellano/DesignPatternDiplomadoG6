@@ -42,6 +42,6 @@ If you wish to contribute to this project, follow these guidelines:
 * Push your changes to your fork: git push origin new-feature
 * Create a pull request on the original repository.
 
-Class Diagram
+## Class Diagram
 
 <img width="916" alt="Screenshot 2023-10-12 at 11 10 59 PM" src="https://github.com/jorgcastellano/darqs_design_patterns_g6/assets/52435269/3b8c90bc-a13f-43d3-bece-058e9a2a660c">
